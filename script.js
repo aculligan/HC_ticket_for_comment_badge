@@ -1,6 +1,6 @@
 // set ticket badge color by status
 $(document).ready(function() {
-  var subdomain = "SUBDOMAIN";
+  var subdomain = "SUBDOMAIN"; //replace SUBDOMAIN for account subdomain. For example: var subdomain = "support";
   if (HelpCenter.user.role == "agent" || HelpCenter.user.role == "manager") {
     var postComment = $(".comment");
     var ticketBadge =$("#comments li .escalation-badge");
@@ -16,7 +16,7 @@ $(document).ready(function() {
         var getData = $.ajax({
           type:"GET",
           url: "https://" + subdomain + ".zendesk.com/api/v2/tickets/" + ticketID + ".json",
-          dataType: "json",
+          dataType: "json"
         })
         getData.success(function(data){
           var ticketStatus = data.ticket.status;
