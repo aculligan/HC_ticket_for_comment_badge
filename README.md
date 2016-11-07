@@ -2,6 +2,8 @@
 
 Show the status of tickets created from comments in Zendesk Help Center articles and Zendesk Community posts.
 
+# About
+
 Someone asked if it was possible to look up the status of a ticket that was created from a HC comment and make changes based on that.
 
 That is definitely possible by making an API call that gets the ticket information. 
