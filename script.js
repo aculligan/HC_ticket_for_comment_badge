@@ -1,7 +1,7 @@
 // set ticket badge color by status
 $(document).ready(function() {
   // Replace SUBDOMAIN for account subdomain. For example: const subdomain = 'support';
-  const subdomain = 'z3nculligan';
+  const subdomain = 'SUBDOMAIN';
   const userRole = HelpCenter.user.role;
   if (userRole == 'agent' || userRole == 'manager') {
     let $postComment = $('.comment');
