@@ -1,15 +1,15 @@
 // Set ticket badge color by status
-$(document).ready(function() {
+$(document).ready(function () {
   // Replace SUBDOMAIN for account subdomain. For example: const subdomain = 'support';
   const subdomain = 'SUBDOMAIN';
   const userRole = HelpCenter.user.role;
   if (userRole == 'agent' || userRole == 'manager') {
     let $postComment = $('.comment');
     let $ticketBadge = $('.escalation-badge');
-    $ticketBadge.attr('id', function(i) {
+    $ticketBadge.attr('id', function (i) {
       return 'comment_badge'+(i+1);
     });
-    $postComment.each(function() {
+    $postComment.each(function () {
       let $this = $(this);
       let $ticketBadgeID = $this.find($ticketBadge).attr('id');
       let $ticketURL = $this.find($ticketBadge).attr('href');
@@ -22,7 +22,7 @@ $(document).ready(function() {
           url: apiURL,
           dataType: 'json'
         });
-        getData.success(function(data){
+        getData.success(function (data){
           let ticketStatus = data.ticket.status;
           let $ticketBadgeIDElement = $(`#${$ticketBadgeID}`);
           if (ticketStatus == 'new') {
