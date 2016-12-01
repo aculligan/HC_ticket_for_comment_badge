@@ -1,4 +1,4 @@
-⚠️ Use of this software is subject to important terms and conditions as set forth in the [License](https://aculligan.github.io/license) file ⚠️
+⚠️ Use of this software is subject to important terms and conditions as set forth in the [License](https://aculligan.github.io/license) page ⚠️
 
 # Zendesk Help Center comment ticket badge
 
