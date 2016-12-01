@@ -1,3 +1,5 @@
+⚠️ Use of this software is subject to important terms and conditions as set forth in the [License](https://github.com/aculligan/Zendesk_Help_Center_comment_ticket_badge/blob/master/License) file ⚠️
+
 # Zendesk Help Center comment ticket badge
 
 Show the status of tickets created from comments in Zendesk Help Center articles and Zendesk Community posts.
