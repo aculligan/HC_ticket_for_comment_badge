@@ -1,4 +1,4 @@
-# HC_ticket_for_comment_badge
+# Zendesk Help Center comment ticket badge
 
 Show the status of tickets created from comments in Zendesk Help Center articles and Zendesk Community posts.
 
