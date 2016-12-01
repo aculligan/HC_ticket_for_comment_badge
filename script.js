@@ -1,17 +1,18 @@
-// set ticket badge color by status
+// Set ticket badge color by status
 $(document).ready(function() {
   // Replace SUBDOMAIN for account subdomain. For example: const subdomain = 'support';
   const subdomain = 'SUBDOMAIN';
   const userRole = HelpCenter.user.role;
   if (userRole == 'agent' || userRole == 'manager') {
     let $postComment = $('.comment');
-    let $ticketBadge = $('#comments li .escalation-badge');
+    let $ticketBadge = $('.escalation-badge');
     $ticketBadge.attr('id', function(i) {
       return 'comment_badge'+(i+1);
     });
     $postComment.each(function() {
-      let $ticketBadgeID = $(this).find($ticketBadge).attr('id');
-      let $ticketURL = $(this).find($ticketBadge).attr('href');
+      let $this = $(this);
+      let $ticketBadgeID = $this.find($ticketBadge).attr('id');
+      let $ticketURL = $this.find($ticketBadge).attr('href');
       if ($ticketURL != undefined) {
         let $urlSplit = $ticketURL.split('/tickets/');
         let $ticketID = $urlSplit[1];
@@ -23,7 +24,7 @@ $(document).ready(function() {
         });
         getData.success(function(data){
           let ticketStatus = data.ticket.status;
-          let $ticketBadgeIDElement = $('#' + $ticketBadgeID);
+          let $ticketBadgeIDElement = $(`#${$ticketBadgeID}`);
           if (ticketStatus == 'new') {
             $ticketBadgeIDElement
               .css({'background': '#F5CA00', 'border-color': '#F5CA00'})
@@ -49,8 +50,8 @@ $(document).ready(function() {
               .css({'background': '#828282', 'border-color': '#828282'})
               .text(`Ticket #${$ticketID} - Solved`);
           }
-        })
+        });
       }
-    })
+    });
   }
 });
