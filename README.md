@@ -22,6 +22,10 @@ This will work on all Help Center templates for both Article and Community post 
 
 Quick note before starting: This is customization that is not supported by Zendesk, and you might need a web developer to help you if you have issues.
 
-Go to your Help Center Edit Theme page and add [this](/script.js) code at the top of the JS page.
+Go to your Help Center's Edit Theme page and add [this](/script.js) code at the top of the JS page.
 
-Please submit bug reports [here](https://github.com/aculligan/HC_ticket_for_comment_badge/issues). Pull requests are welcome.
+Remember to change SUBDOMAIN to your actual subdomain. For example ```const subdomain = 'support';```
+
+Save and publish the changes, and that's it.
+
+Please submit bug reports [here](https://github.com/aculligan/Zendesk_Help_Center_comment_ticket_badge/issues). Pull requests are welcome.
