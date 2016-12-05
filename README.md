@@ -26,7 +26,7 @@ Quick note before starting: This is customization that is not supported by Zende
 
 Go to your Help Center's Edit Theme page and add [this](/script.js) code at the top of the JS page.
 
-Remember to change SUBDOMAIN to your actual subdomain. For example ```const subdomain = 'support';```
+Remember to change SUBDOMAIN to your actual subdomain. For example ```var subdomain = 'support';```
 
 Save and publish the changes, and that's it.
 
