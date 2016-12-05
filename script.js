@@ -1,0 +1,51 @@
+// Set ticket badge color by status
+$(document).ready(function () {
+  // Replace SUBDOMAIN for account subdomain. For example: const subdomain = 'support';
+  var subdomain = 'SUBDOMAIN';
+  var userRole = HelpCenter.user.role;
+  if (userRole == 'agent' || userRole == 'manager') {
+    (function () {
+      var $postComment = $('.comment');
+      var $ticketBadge = $('.escalation-badge');
+      $ticketBadge.attr('id', function (i) {
+        return 'comment_badge' + (i + 1);
+      });
+      $postComment.each(function () {
+        var $this = $(this);
+        var $ticketBadgeID = $this.find($ticketBadge).attr('id');
+        var $ticketURL = $this.find($ticketBadge).attr('href');
+        if ($ticketURL != undefined) {
+          (function () {
+            var $urlSplit = $ticketURL.split('/tickets/');
+            var $ticketID = $urlSplit[1];
+            var apiURL = 'https://' + subdomain + '.zendesk.com/api/v2/tickets/' + $ticketID + '.json';
+            var getData = $.ajax({
+              type: 'GET',
+              url: apiURL,
+              dataType: 'json'
+            });
+            getData.success(function (data) {
+              var ticketStatus = data.ticket.status;
+              var $ticketBadgeIDElement = $('#' + $ticketBadgeID);
+              if (ticketStatus == 'new') {
+                $ticketBadgeIDElement.css({ 'background': '#F5CA00', 'border-color': '#F5CA00' }).text('Ticket #' + $ticketID + ' - New');
+              }
+              if (ticketStatus == 'open') {
+                $ticketBadgeIDElement.css({ 'background': '#E82A2A', 'border-color': '#E82A2A' }).text('Ticket #' + $ticketID + ' - Open');
+              }
+              if (ticketStatus == 'pending') {
+                $ticketBadgeIDElement.css({ 'background': '#59BBE0', 'border-color': '#59BBE0' }).text('Ticket #' + $ticketID + ' - Pending');
+              }
+              if (ticketStatus == 'hold') {
+                $ticketBadgeIDElement.css({ 'background': '#000000', 'border-color': '#000000' }).text('Ticket #' + $ticketID + ' - On-Hold');
+              }
+              if (ticketStatus == 'solved' || ticketStatus == 'closed') {
+                $ticketBadgeIDElement.css({ 'background': '#828282', 'border-color': '#828282' }).text('Ticket #' + $ticketID + ' - Solved');
+              }
+            });
+          })();
+        }
+      });
+    })();
+  }
+});
